@@ -3,10 +3,7 @@ from typing import Optional
 
 SUPPORTED_CURRENCY = {"RUR"}
 
-
 def calc_salary_avg(salary: dict | None) -> tuple[Optional[str], Optional[float], Optional[float], Optional[float]]:
-
-
     """Возвращает (currency, from, to, avg). Если валюта не SUPPORTED_CURRENCY — возвращает None-значения.
     HH salary: {from: int|None, to: int|None, currency: str|None}
     """

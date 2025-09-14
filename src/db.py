@@ -4,11 +4,8 @@ from psycopg2.extras import RealDictCursor
 from contextlib import contextmanager
 from .config import settings
 
-
 @contextmanager
 def get_conn():
-
-
     conn = psycopg2.connect(
         host=settings.host,
         port=settings.port,
@@ -20,4 +17,4 @@ def get_conn():
     try:
         yield conn
     finally:
-    conn.close()
+        conn.close()
