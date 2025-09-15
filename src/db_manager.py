@@ -2,10 +2,11 @@ from __future__ import annotations
 from typing import Iterable, List, Tuple
 from .db import get_conn
 
+
 class DBManager:
     """Работа с БД PostgreSQL через psycopg2."""
 
-    def get_companies_and_vacancies_count(self) -> list[tuple[str, int]]:
+    def get_companies_and_vacancies_count(self) -> List[Tuple[str, int]]:
         """Список компаний и количество вакансий у каждой."""
         sql = (
             """
@@ -17,7 +18,7 @@ class DBManager:
             """
         )
         with get_conn() as conn, conn.cursor() as cur:
-            cur.execute(sql)  # ✅ с отступом
+            cur.execute(sql)
             rows = cur.fetchall()
             return [(r["name"], r["vacancies"]) for r in rows]
 
@@ -32,9 +33,9 @@ class DBManager:
             """
         )
         with get_conn() as conn, conn.cursor() as cur:
-        cur.execute(sql)
-        rows = cur.fetchall()
-        return [(r["company"], r["vacancy"], r["salary_avg"], r["alternate_url"]) for r in rows]
+            cur.execute(sql)
+            rows = cur.fetchall()
+            return [(r["company"], r["vacancy"], r["salary_avg"], r["alternate_url"]) for r in rows]
 
     def get_avg_salary(self) -> float | None:
         """Средняя зарплата по всем вакансиям (по поддерживаемой валюте)."""
