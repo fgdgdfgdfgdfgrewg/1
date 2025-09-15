@@ -1,9 +1,8 @@
-from __future__ import annotations
-from .config import settings
-from . import db_init
-from .hh_api import search_employers_by_name, iter_vacancies_by_employer
-from .loader import upsert_employers, upsert_vacancies
-from .cli import run_cli
+from src.config import settings
+from src import db_init
+from src.hh_api import search_employers_by_name, iter_vacancies_by_employer
+from src.loader import upsert_employers, upsert_vacancies
+from src.cli import run_cli
 
 def bootstrap() -> None:
     # 1) Создать БД и схему
