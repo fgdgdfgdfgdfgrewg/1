@@ -5,7 +5,7 @@ from .db import get_conn
 class DBManager:
     """Работа с БД PostgreSQL через psycopg2."""
 
-    def get_companies_and_vacancies_count(self) -> List[Tuple[str, int]]:
+    def get_companies_and_vacancies_count(self) -> list[tuple[str, int]]:
         """Список компаний и количество вакансий у каждой."""
         sql = (
             """
@@ -17,7 +17,7 @@ class DBManager:
             """
         )
         with get_conn() as conn, conn.cursor() as cur:
-            cur.execute(sql)
+            cur.execute(sql)  # ✅ с отступом
             rows = cur.fetchall()
             return [(r["name"], r["vacancies"]) for r in rows]
 
